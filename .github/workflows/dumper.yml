@@ -26,15 +26,15 @@ jobs:
 
           - model: "SM-G998B"
 
-            region: "DBT"
+            region: "AUT"
           
           - model: "SM-G996B"
 
-            region: "DBT"
+            region: "AUT"
           
           - model: "SM-G991B"
 
-            region: "DBT"
+            region: "AUT"
 
     steps:
 
