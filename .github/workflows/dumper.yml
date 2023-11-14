@@ -24,18 +24,14 @@ jobs:
 
         include:
 
-          - model: "SM-G998B"
+          - model: "SM-A137F"
 
-            region: "AUT"
+            region: "EUX"
           
-          - model: "SM-G996B"
+          - model: "SM-A137F"
 
-            region: "AUT"
+            region: "EUY"
           
-          - model: "SM-G991B"
-
-            region: "AUT"
-
     steps:
 
       - name: Checkout repo
