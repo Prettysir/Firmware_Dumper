@@ -27,11 +27,7 @@ jobs:
           - model: "SM-A137F"
 
             region: "EUX"
-          
-          - model: "SM-A137F"
-
-            region: "EUY"
-          
+                  
     steps:
 
       - name: Checkout repo
@@ -101,16 +97,14 @@ jobs:
           
 
       - name: Fetch firmware
-
         if: env.need_update == 1
-
-        run: samfirm -m ${{ matrix.model }} -r ${{ matrix.region }}
-
-      - name: Print directory structure
-
-        if: env.need_update == 1
-
-        run: ls -la ${{ matrix.model }}_${{ matrix.region }}
+        run: |
+          if [[ "${{ matrix.model }}" == "SM-A236B" ]]; then
+              imei="352566275239873"
+          else
+              imei="354612945239873"
+          fi
+          samfirm -m ${{ matrix.model }} -r ${{ matrix.region }} -i $imei
 
       - name: Get path of files
 
@@ -127,8 +121,7 @@ jobs:
           echo "cp=`find -name CP*`" >> $GITHUB_ENV
 
           echo "csc=`find -name CSC*`" >> $GITHUB_ENV
-
-          
+          echo "home_csc_tar=`find -name HOME_CSC*`" >> $GITHUB_ENV
 
       - name: Extract images from AP and create zip
 
@@ -268,7 +261,6 @@ jobs:
 
           tags: true
 
-          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload release assets
 
