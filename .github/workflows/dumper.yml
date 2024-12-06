@@ -12,7 +12,7 @@ jobs:
       matrix:
         include:
           - model: "SM-A235M"
-            region: "EUX"
+            region: "MXO"
                  
     steps:
       - name: Checkout repo
